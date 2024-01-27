@@ -18,7 +18,7 @@ def process_images(images_dir, model, transform, device):
         res = inference(image, model)
         tags = res[0]  # Assuming the tags are in the first element
         # Extract other metadata as needed
-        data.append({'Filename': file, 'Tags': tags})
+        data.append({'Filename': file, 'Tags': tags, 'image_path': file_path })
 
     return pd.DataFrame(data)
 
