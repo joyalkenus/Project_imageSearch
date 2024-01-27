@@ -19,7 +19,7 @@ def inference_tag2text(image, model, input_tag="None"):
     # If user input specified tags:
     else:
         input_tag_list = []
-        input_tag_list.append(input_tag.replace(',', ' | '))
+        input_tag_list.append(input_tag)
 
         with torch.no_grad():
             caption, input_tag = model.generate(image,
