@@ -52,7 +52,7 @@ if __name__ == "__main__":
     df = process_images(args.image_dir, model, transform, device)
 
     # Display the DataFrame
-    return df
+    
 
     # Optionally, save the DataFrame to a CSV file
     df.to_csv('image_tags.csv', index=False)
