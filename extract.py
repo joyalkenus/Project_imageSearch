@@ -6,9 +6,12 @@ import torch
 from ram.models import ram
 from ram import inference_ram as inference
 from ram import get_transform
+from lavis.models import load_model
+
+
 
 # Function to process and infer tags for multiple images
-def process_images(images_dir, model, transform, device):
+def process_images(images_dir, model,model1, transform, device):
     image_files = [f for f in sorted(os.listdir(images_dir)) if f.lower().endswith(('.jpg', '.jpeg', '.png'))]
     data = []
 
@@ -16,9 +19,13 @@ def process_images(images_dir, model, transform, device):
         file_path = os.path.join(images_dir, file)
         image = transform(Image.open(file_path)).unsqueeze(0).to(device)
         res = inference(image, model)
+        images_blip = Image.open(img_path).convert("RGB")
+    
+        # Generate caption for the image
+        captions = model.predict(image)
         tags = res[0]  # Assuming the tags are in the first element
         # Extract other metadata as needed
-        data.append({'Filename': file, 'Tags': tags, 'image_path': file_path })
+        data.append({'Filename': file, 'Tags': tags, 'Captions': captions,'image_path': file_path })
 
     return pd.DataFrame(data)
 
@@ -47,9 +54,11 @@ if __name__ == "__main__":
     model = ram(pretrained=args.pretrained, image_size=args.image_size, vit='swin_l')
     model.eval()
     model = model.to(device)
+    # Load the BLIP image captioning model
+    model1 = load_model("blip_image_captioning")
 
     # Process images in the specified directory
-    df = process_images(args.image_dir, model, transform, device)
+    df = process_images(args.image_dir, model, model1 ,transform, device)
 
     # Display the DataFrame
     
