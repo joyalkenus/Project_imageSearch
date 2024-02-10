@@ -50,7 +50,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Setup device and model
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     transform = get_transform(image_size=args.image_size)
     model = ram(pretrained=args.pretrained, image_size=args.image_size, vit='swin_l')
     model.eval()
@@ -59,7 +59,7 @@ if __name__ == "__main__":
     model1, vis_processors, _ = load_model_and_preprocess(name="blip_caption", model_type="base_coco", is_eval=True, device=device)
 
     # Process images in the specified directory
-    df = process_images(args.image_dir, model, model1 ,transform, device)
+    df = process_images(args.image_dir, model, model1 ,vis_processors,transform, device)
 
     # Display the DataFrame
     
