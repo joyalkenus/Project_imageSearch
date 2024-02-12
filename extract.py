@@ -22,7 +22,7 @@ def process_images(images_dir, model,model1,vis_processors, transform, device):
         raw_image = Image.open(file_path).convert("RGB")
         res = inference(image, model)
         images_blip = vis_processors["eval"](raw_image).unsqueeze(0).to(device)
-    
+        print(images_blip.shape)
         # Generate caption for the image
         captions = model1.generate(images_blip)
         tags = res[0]  # Assuming the tags are in the first element
