@@ -20,7 +20,7 @@ def process_images(images_dir, model,model1,vis_processors, transform, device):
         file_path = os.path.join(images_dir, file)
         image = transform(Image.open(file_path)).unsqueeze(0).to(device)
         res = inference(image, model)
-        images_blip = vis_processors["eval"](raw_image).unsqueeze(0).to(device)
+        images_blip = vis_processors["eval"](file_path).unsqueeze(0).to(device)
     
         # Generate caption for the image
         captions = model.predict(images_blip)
