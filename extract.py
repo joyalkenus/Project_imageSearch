@@ -24,7 +24,7 @@ def process_images(images_dir, model,model1,vis_processors, transform, device):
         images_blip = vis_processors["eval"](raw_image).unsqueeze(0).to(device)
         print(images_blip.shape)
         # Generate caption for the image
-        captions = model1.generate(images_blip)
+        captions = model1.generate({"image": image_blip})
         tags = res[0]  # Assuming the tags are in the first element
         # Extract other metadata as needed
         data.append({'Filename': file, 'Tags': tags, 'Captions': captions,'image_path': file_path })
