@@ -19,6 +19,8 @@ Here's a sneak peek into the technical wizardry behind Project_imageSearch:
 - **Deep Learning models for image tags**: We use the RAM model to delve into the nuances of any image, capturing details that go beyond the pixels.
 - **Language Understanding**: Large language models come into play, interpreting your descriptions and connecting them with the right images.
 
+- To run the model and test it out. use the run.ipynb file. replace the google drive mount to your drive link and give the path to your gallery of images.
+- let me know how it performs on your pictures. Im Curious.
 ## 🙌 Get Involved
 
 I'm on a journey, and I'd love for you to join me. Whether you're a developer, a tech enthusiast, or just someone who loves images, your contributions and feedback are invaluable.
