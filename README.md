@@ -21,6 +21,16 @@ Here's a sneak peek into the technical wizardry behind Project_imageSearch:
 
 - To run the model and test it out. use the run.ipynb file. replace the google drive mount to your drive link and give the path to your gallery of images.
 - let me know how it performs on your pictures. Im Curious.
+
+## Usage Instructions
+- Run the Projectimagesearch.ipnb file
+- give the path to a file in your drive which has a bunch of images
+- select the model
+- give the user prompt
+- you can make cahnges to the embeddings as necessary
+- get results and also raise any issues
+
+
 ## 🙌 Get Involved
 
 I'm on a journey, and I'd love for you to join me. Whether you're a developer, a tech enthusiast, or just someone who loves images, your contributions and feedback are invaluable.
